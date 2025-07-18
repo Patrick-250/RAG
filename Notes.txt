@@ -1,0 +1,47 @@
+*RAG is an architecture that combine the strengths of retrieval-based systems and generation-based models to produce 
+a more accurate and contextual relevant response.
+
+**RAG stands for retrieval Augmented generation...efficient way to customize a model(LLM) with own data.
+
+***RAG triad has 3 main components that are Query(user prompt),context(what is the context of this) and response(returned by the model prolly)
+
+                            ***Naive RAG overview*** 
+
+douments------------------->chunks(many of them)-------------------->embeddings(vector rep of the chunks)
+
+step1. document(s) are split into chunks(many of them)
+step2.the chunks are then converted into embeddings(many) by the embedding LLM(there many out there) the stored in vector db
+step3.when the query(prompt) comes in, it is also converted into embedding that is compared to step2 embeddings to find most 
+      similar(cosine similarity) chunks
+step4. most similar is feed into Gen.LLM along with the query;
+ which then make a final response to the query
+
+note: step1 and 2 are indexing phase
+      step3 is retrieval phase
+      step4 is generation phase
+
+                 ****Naive RAG has issues to be taken care of*******
+
+                 1.limited context understanding
+                 2.inconsistent relevance and quality of retrieved docs
+                 3.poor connection btn retrieval and generation...
+                 3.inefficient handling of handling large scale data
+
+                    ****Advanced(improved) RAG********
+
+          this introduces specific improvements to overcome  Naive RAG limitations to enhance the retrieval quality
+
+
+  ******strategies for advanced RAG: 
+  1.pre-retrieval:-improvement of indexing structure and user query
+                  -improves data details;align things correctly.
+  2.post-retrieval: -combine pre-retrieval data with original query--include re-ranking
+   notes: there are many techniques out there.
+
+                 #####examples of common techniques#####
+
+                 1.query expansion(with generated answer)
+                    *generate potential answers using LLm and get relevant context.
+
+                    
+
